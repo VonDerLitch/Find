@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados da Pesquisa</title>
+</head>
+<body>
+    <h1>Resultados da Pesquisa</h1>
+    <form method="GET" action="{% url 'buscar_profissionais' %}">
+        <input type="text" name="q" placeholder="Pesquisar...">
+        <button type="submit">Pesquisar</button>
+    </form>
+    
+    <ul>
+        {% for profissional in resultados %}
+            <li>{{ profissional.nome }} - {{ profissional.area }}</li>
+        {% empty %}
+            <li>Nenhum resultado encontrado.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
